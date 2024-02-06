@@ -1,28 +1,42 @@
+import {
+  ArrowPathIcon,
+  Bars3Icon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
+
 export const links = [
   {
     id: 1,
-    url: '/company',
+    url: '/features',
     text: 'features',
     sublinks: [
       {
         id: 1.1,
         url: 'todo',
         text: 'todo list',
+        icon: require('.//assets/icon-todo.svg'),
       },
       {
         id: 1.2,
         url: 'calendar',
         text: 'features',
+        icon: ChartPieIcon,
       },
       {
         id: 1.3,
         url: 'reminders',
         text: 'reminders',
+        icon: ChartPieIcon,
       },
       {
         id: 1.4,
         url: 'planning',
         text: 'planning',
+        icon: ChartPieIcon,
       },
     ],
   },
@@ -52,10 +66,12 @@ export const links = [
     id: 3,
     url: '/careers',
     text: 'projects',
+    icon: ChartPieIcon,
   },
   {
     id: 4,
     url: '/about',
     text: 'about',
+    icon: ChartPieIcon,
   },
 ];
