@@ -70,7 +70,7 @@ const NavMenu = () => {
                     >
                       <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                         {sublinks.map((sublink) => {
-                          const { id, url, text, icon } = sublink;
+                          const { id, url, text, iconpath, iconfill } = sublink;
                           return (
                             <div className='p-4'>
                               <div
@@ -78,10 +78,15 @@ const NavMenu = () => {
                                 className='group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'
                               >
                                 <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                                  <todo
+                                  <svg
+                                    width='16'
+                                    height='16'
+                                    xmlns='http://www.w3.org/2000/svg'
                                     className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
                                     aria-hidden='true'
-                                  />
+                                  >
+                                    <path d={iconpath} fill={iconfill} />
+                                  </svg>
                                 </div>
                                 <div className='flex-auto'>
                                   <a
@@ -188,8 +193,29 @@ const NavMenu = () => {
                               </Disclosure.Button>
                               <Disclosure.Panel className='mt-2 space-y-2'>
                                 {sublinks.map((sublink) => {
-                                  const { id, url, text, icon } = sublink;
-                                  return (
+                                  const { id, url, text, iconpath, iconfill } =
+                                    sublink;
+                                  return iconpath ? (
+                                    <div className='flex'>
+                                      <svg
+                                        width='16'
+                                        height='16'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        className='mt-4 text-gray-600 group-hover:text-indigo-600'
+                                        aria-hidden='true'
+                                      >
+                                        <path d={iconpath} fill={iconfill} />
+                                      </svg>
+                                      <Disclosure.Button
+                                        key={id}
+                                        as='a'
+                                        href={url}
+                                        className='block rounded-lg py-2 pl-3 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                                      >
+                                        {text}
+                                      </Disclosure.Button>
+                                    </div>
+                                  ) : (
                                     <Disclosure.Button
                                       key={id}
                                       as='a'
