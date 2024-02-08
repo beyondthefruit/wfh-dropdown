@@ -24,10 +24,10 @@ const NavMenu = () => {
   return (
     <header className='bg-white'>
       <nav
-        className='mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8'
+        className='mx-auto flex w-screen items-center justify-between lg: justify-start  p-6 lg:px-8'
         aria-label='Global'
       >
-        <div className='flex lg:flex-1'>
+        <div className='flex flex-1 lg:flex-initial lg:mr-12'>
           <a href='#' className='-m-1.5 p-1.5'>
             <span className='sr-only text-3xl'>Snap</span>
             <img className='h-8 w-auto' src={Logo} alt='' />
@@ -36,7 +36,7 @@ const NavMenu = () => {
         <div className='flex lg:hidden'>
           <button
             type='button'
-            className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
+            className='-m-2.5 flex-1 inline-flex items-center lg:justify-center rounded-md p-2.5 text-gray-700'
             onClick={() => setMobileMenuOpen(true)}
           >
             <span className='sr-only'>Open main menu</span>
@@ -44,14 +44,14 @@ const NavMenu = () => {
           </button>
         </div>
 
-        <Popover.Group className='hidden lg:flex lg:gap-x-12'>
+        <Popover.Group className='hidden lg:flex lg:gap-x-6 '>
           {links.map((link) => {
             const { id, url, text, sublinks } = link;
             return (
               <>
                 {sublinks ? (
                   <Popover className='relative'>
-                    <Popover.Button className='flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900'>
+                    <Popover.Button className='flex items-center gap-x-1 text-sm font-medium leading-6 text-gray-900 lg:flex-1 lg:w-9/12'>
                       {text}
                       <ChevronDownIcon
                         className='h-5 w-5 flex-none text-gray-400'
@@ -91,7 +91,7 @@ const NavMenu = () => {
                                 <div className='flex-auto'>
                                   <a
                                     href={url}
-                                    className='block font-semibold text-gray-900'
+                                    className='block font-medium text-gray-900'
                                   >
                                     {text}
                                     <span className='absolute inset-0' />
@@ -102,21 +102,6 @@ const NavMenu = () => {
                             </div>
                           );
                         })}
-                        {/* <div className='grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50'>
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className='flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100'
-                    >
-                      <item.icon
-                        className='h-5 w-5 flex-none text-gray-400'
-                        aria-hidden='true'
-                      />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
                       </Popover.Panel>
                     </Transition>
                   </Popover>
@@ -124,28 +109,28 @@ const NavMenu = () => {
                   <>
                     <a
                       href='#'
-                      className='text-sm font-semibold leading-6 text-gray-900'
+                      className='pr-5 text-sm font-medium leading-6 text-gray-900'
                     >
                       {text}
                     </a>
-                    {/* <a
-                      href='#'
-                      className='text-sm font-semibold leading-6 text-gray-900'
-                    >
-                      Marketplace
-                    </a> */}
                   </>
                 )}
               </>
             );
           })}
         </Popover.Group>
-        <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-          <a href='#' className='text-sm font-semibold leading-6 text-gray-900'>
-            Log in <span aria-hidden='true'>&rarr;</span>
+        <div className='hidden lg:flex lg:pl-12 lg:flex-1 lg:justify-end'>
+          <a
+            href='#'
+            className='py-1 lg:mr-10 text-sm font-normal leading-6 text-gray-900 '
+          >
+            Login
           </a>
-          <a href='#' className='text-sm font-semibold leading-6 text-gray-900'>
-            Register <span aria-hidden='true'>&rarr;</span>
+          <a
+            href='#'
+            className='px-3 py-1 text-sm font-normal leading-6 text-gray-900 rounded-xl border border-black'
+          >
+            Register
           </a>
         </div>
       </nav>
@@ -156,7 +141,7 @@ const NavMenu = () => {
         onClose={setMobileMenuOpen}
       >
         <div className='fixed inset-0 z-10' />
-        <Dialog.Panel className='fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+        <Dialog.Panel className='fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-xs sm:ring-1 sm:ring-gray-900/10'>
           <div className='flex items-center justify-between'>
             <a href='#' className='-m-1.5 p-1.5'>
               <span className='sr-only'>Snap</span>
@@ -195,8 +180,9 @@ const NavMenu = () => {
                                 {sublinks.map((sublink) => {
                                   const { id, url, text, iconpath, iconfill } =
                                     sublink;
+                                  // check if we have an icon if yes design is different
                                   return iconpath ? (
-                                    <div className='flex'>
+                                    <div className='flex pl-10'>
                                       <svg
                                         width='16'
                                         height='16'
@@ -220,7 +206,7 @@ const NavMenu = () => {
                                       key={id}
                                       as='a'
                                       href={url}
-                                      className='block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                                      className='block rounded-lg py-2 pl-10 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                                     >
                                       {text}
                                     </Disclosure.Button>
@@ -247,13 +233,13 @@ const NavMenu = () => {
               <div className='py-6'>
                 <a
                   href='#'
-                  className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                  className='-mx-3 block text-center rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
                 >
                   Log in
                 </a>
                 <a
                   href='#'
-                  className='-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                  className='-mx-3 block text-center rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 rounded-xl border border-black'
                 >
                   Register
                 </a>

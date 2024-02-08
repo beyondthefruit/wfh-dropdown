@@ -73,11 +73,11 @@ export const links = [
   {
     id: 3,
     url: '/careers',
-    text: 'projects',
+    text: 'Careers',
   },
   {
     id: 4,
     url: '/about',
-    text: 'about',
+    text: 'About',
   },
 ];
