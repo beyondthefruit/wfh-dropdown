@@ -8,6 +8,9 @@ module.exports = {
       lg: '976px',
       xl: '1440px',
     },
+    // container: {
+    //   center: true,
+    // },
     extend: {
       colors: {
         brightRed: 'hsl(12, 88%, 59%)',

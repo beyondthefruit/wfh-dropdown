@@ -6,7 +6,7 @@ function App() {
     <div className='app'>
       <div className='container'>
         <NavMenu />
-        {/* <Main /> */}
+        <Main />
       </div>
     </div>
   );
