@@ -2,25 +2,14 @@ import React from 'react';
 import { Fragment, useState } from 'react';
 import Logo from '../assets/logo.svg';
 import { links } from '../data';
-import { todo } from '../assets/icon-todo.svg';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-const NavMenu = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+const NavMenu = ({ mobileMenuOpen, setMobileMenuOpen }) => {
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  console.log(mobileMenuOpen);
   return (
     <header className='bg-white'>
       <nav
@@ -170,10 +159,10 @@ const NavMenu = () => {
                               <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
                                 {text}
                                 <ChevronDownIcon
-                                  className={classNames(
-                                    open ? 'rotate-180' : '',
-                                    'h-5 w-5 flex-none'
-                                  )}
+                                  className={
+                                    (open ? 'rotate-180' : '',
+                                    'h-5 w-5 flex-none')
+                                  }
                                   aria-hidden='true'
                                 />
                               </Disclosure.Button>
